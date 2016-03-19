@@ -1,0 +1,4 @@
+--color
+--default-path=./app/cases
+-r ./spec/spec_helper.rb
+-f doc
