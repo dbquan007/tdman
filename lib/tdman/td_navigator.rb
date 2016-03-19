@@ -4,7 +4,7 @@ class TdNavigator
 	end
 	
 	def start_borwser(browser)
-		puts "start #{browser}"
+		puts "start #{browser}" if $debug
 	end
 	
 end
