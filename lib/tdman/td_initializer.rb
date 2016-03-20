@@ -8,7 +8,6 @@ class TdInitializer
         generate_pathes
         load_config_and_test_data
         load_app_pages_and_components
-        load_all_test_data
         start_browser
     end
 
@@ -25,6 +24,7 @@ class TdInitializer
         puts @conf_file if $debug
         TdConfig.new(@conf_file)
         puts "config: "+$config.to_s if $debug
+        puts $config.proxy['seo'] 
     end
 
     def load_app_pages_and_components
@@ -32,12 +32,13 @@ class TdInitializer
         TdPage.new(@pages_path)
     end
 
-    def load_all_test_data
-        puts "load all test data"
-    end
-
     def start_browser
-        TdNavigator.new("chrome")
+        $b = TdNavigator.new.start_browser
+        if $debug
+            $b.goto "www.baidu.com"
+            puts $b.title
+            $b.close
+        end
     end
 
 end
